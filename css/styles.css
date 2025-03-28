@@ -1,0 +1,480 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: black;
+    background-image: linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent .1px),
+                        linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent .1px);
+    background-size: 40px 40px;
+}
+
+
+
+header {
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    color: white;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 5px 0;
+    text-transform: uppercase;
+
+    /* Efek mengkilap */
+    background: linear-gradient(90deg, #fff, #ffd700, #fff);
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: shine 10s linear infinite;
+    position: relative; /* Tambahkan ini untuk posisi relatif */
+}
+
+@keyframes shine {
+    0% { background-position: -200% center; }
+    50% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+}
+
+
+
+@keyframes glow {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+header span {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+header p {
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 0.8;
+    color: #99cc33;
+    font-weight: 600;
+    margin-bottom: 15px;
+
+}
+
+.btn {
+    display: flex;
+    gap: 10px;
+}
+
+.btn button {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 8px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn button a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn .btnrk:hover {
+    background: #99cc33;
+    color: black;
+    transform: scale(1.1);
+}
+
+.btn .btnrks:hover {
+    background: #fdbc00;
+    color: black;
+    transform: scale(1.1);
+}
+
+.stars {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkling 2s infinite alternate;
+    opacity: 0.3;
+}
+
+/* Animasi bintang berkedip */
+@keyframes twinkling {
+    0% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+    width: 30.5vh;
+    height: auto;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 13;
+}
+
+.moon {
+    width: 17vh;
+    height: 17vh;
+    border-radius: 50%;
+    /* background: radial-gradient(circle, #d9d9d9 30%, #a8a8a8 60%, #6e6e6e 100%); */
+    box-shadow: 0 0 20px rgba(200, 200, 255, 0.8), 
+                0 0 40px rgba(150, 150, 255, 0.5);
+    position: absolute;
+    z-index: 12; /* Pastikan bulan tetap di atas */
+    top: 50%;
+    left: 50%;
+    transform: translate(-52.9%, -52.5%);
+}
+
+.logo img {
+    width: 31vh;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 13;
+}
+
+.orbits {
+    position: absolute;
+    width: 100vh;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    top: 53%;
+    left: 50%;
+    transform: translate(-53%, -53%);
+    transform-origin: center; /* Menjadikan pusat rotasi di tengah */
+    animation: rotateOrbit 10s linear infinite;
+    z-index: 10;
+}
+
+/* Planet */
+.planet {
+    background-color: #4A90E2;
+    border-radius: 50%;
+    position: absolute;
+    top: 48%;
+    left: 48%;
+    background: none;
+    transform: translate(-50%, -50%);
+
+}
+
+.rk-logo {
+    width: 5rem; /* Sesuaikan ukuran logo */
+    height: auto; /* Biarkan tinggi menyesuaikan proporsi */
+    object-fit: contain; /* Pastikan logo tidak terdistorsi */
+    display: block;
+}
+
+.rks-logo {
+    width: 4rem; /* Sesuaikan ukuran logo */
+    height: auto; /* Biarkan tinggi menyesuaikan proporsi */
+    object-fit: contain; /* Pastikan logo tidak terdistorsi */
+    display: block;
+}
+
+.robo {
+    width: 6.5rem; /* Sesuaikan ukuran logo */
+    height: auto; /* Biarkan tinggi menyesuaikan proporsi */
+    object-fit: contain; /* Pastikan logo tidak terdistorsi */
+    display: block;
+    transform: rotate(13deg);
+}
+
+
+/* Orbit Animasi */
+.planet1 {
+    transform: translate(-50%, -50%) translateX(120px);
+    animation: orbit1 8s linear infinite;
+}
+
+.planet2 {
+    transform: translate(-50%, -50%) translateX(150px);
+    animation: orbit2 16s linear infinite;
+}
+
+.planet3 {
+    transform: translate(-50%, -50%) translateX(180px);
+    animation: orbit3 24s linear infinite;
+}
+
+.planet4 {
+    width: 7vh;
+    height: 7vh;
+    background-color: #8e44ad;
+    transform: translate(-50%, -50%) translateX(210px);
+    animation: orbit4 32s linear infinite;
+}
+
+.planet5 {
+    width: 10vh;
+    height: 10vh;
+    background-color: #fdbc00;
+    transform: translate(-50%, -50%) translateX(240px);
+    animation: orbit5 40s linear infinite;
+}
+
+@keyframes orbit1 {
+    0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+@keyframes orbit2 {
+    0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+    100% { transform: rotate(-360deg) translateX(150px) rotate(360deg); }
+}
+
+@keyframes orbit3 {
+    0% { transform: rotate(0deg) translateX(180px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(180px) rotate(-360deg); }
+}
+
+@keyframes orbit4 {
+    0% { transform: rotate(0deg) translateX(210px) rotate(0deg); }
+    100% { transform: rotate(-360deg) translateX(210px) rotate(360deg); }
+}
+
+@keyframes orbit5 {
+    0% { transform: rotate(0deg) translateX(240px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(240px) rotate(-360deg); }
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 15px 20px;
+    position: fixed;
+    bottom: 0;
+    margin-top: auto;
+    z-index: 1001;
+}
+
+.sosmed {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    gap: 2rem;
+    margin-bottom: 10px;
+}
+
+.sosmed a {
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sosmed a:hover {
+    transform: scale(1.2);
+    color: #99cc33;
+}
+
+footer p {
+    color: white;
+    font-size: .8rem;
+}
+
+.rocket {
+    position: fixed;
+    width: 2rem;
+    height: auto;
+    transition: transform 0.2s linear;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    header span {
+        font-size: .8rem;
+    }
+
+    header p {
+        font-size: .8rem;
+        margin-bottom: 12px;
+    }
+
+    .btn {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .btn button {
+        padding: 6px 5px;
+        font-size: .8rem;
+    }
+
+    .orbits {
+        flex-direction: column;
+    }
+
+    .planet img {
+        width: 60px;
+    }
+
+    .logo {
+        top: 54%;
+        left: 51%;
+        transform: translate(-50%, -50%);
+        transform-origin: center; /* Menjadikan pusat rotasi di tengah */
+    }
+
+    .logo img {
+        width: 100%;
+    }
+
+    .moon {
+        width: 17vh;
+        height: 17vh;
+    }
+
+    .orbits {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 53%;
+        left: 47%;
+        transform: translate(-50%, -50%);
+        transform-origin: center; /* Menjadikan pusat rotasi di tengah */
+        animation: rotateOrbit 10s linear infinite;
+        z-index: 10;
+    }
+
+    .sosmed a {
+        font-size: 1.2rem;
+    }
+
+    footer p {
+        padding: 0 15px;
+    }
+
+    footer p {
+        font-size: small;
+    }
+
+    .planet1 {
+        transform: translate(-50%, -50%) translateX(100px);
+        animation: orbit1 8s linear infinite;
+    }
+    
+    .planet2 {
+        transform: translate(-50%, -50%) translateX(120px);
+        animation: orbit2 16s linear infinite;
+    }
+    
+    .planet3 {
+        transform: translate(-50%, -50%) translateX(140px);
+        animation: orbit3 24s linear infinite;
+    }
+    
+    .planet4 {
+        width: 6vh;
+        height: 6vh;
+        background-color: #8e44ad;
+        transform: translate(-50%, -50%) translateX(160px);
+        animation: orbit4 32s linear infinite;
+    }
+    
+    .planet5 {
+        width: 8vh;
+        height: 8vh;
+        background-color: #fdbc00;
+        transform: translate(-50%, -50%) translateX(180px);
+        animation: orbit5 40s linear infinite;
+    }
+    
+    @keyframes orbit1 {
+        0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+    }
+    
+    @keyframes orbit2 {
+        0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+        100% { transform: rotate(-360deg) translateX(120px) rotate(360deg); }
+    }
+    
+    @keyframes orbit3 {
+        0% { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+    }
+    
+    @keyframes orbit4 {
+        0% { transform: rotate(0deg) translateX(160px) rotate(0deg); }
+        100% { transform: rotate(-360deg) translateX(160px) rotate(360deg); }
+    }
+    
+    @keyframes orbit5 {
+        0% { transform: rotate(0deg) translateX(180px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(180px) rotate(-360deg); }
+    }
+}
